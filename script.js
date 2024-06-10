@@ -1,22 +1,3 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyDt9loPyejqfFSu40AMaciRhYLPp8kgs_8",
-  authDomain: "skalbmierz-db3c1.firebaseapp.com",
-  projectId: "skalbmierz-db3c1",
-  storageBucket: "skalbmierz-db3c1.appspot.com",
-  messagingSenderId: "972084464934",
-  appId: "1:972084464934:web:751364286be13781d9c5e7",
-  measurementId: "G-W0Z1W2ZDHG"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
 document.addEventListener('DOMContentLoaded', async () => {
     const galleryItems = document.querySelectorAll('.gallery-item');
 
@@ -33,15 +14,25 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     // Obsługa komentarzy
+    let commentAdded = false; // Flag to track if a comment is already added
     const comments = [];
     
     window.addComment = async function() {
-        const commentText = document.getElementById('commentText').value;
-        if (commentText.trim() !== '') {
-            await addDoc(collection(db, 'comments'), { text: commentText });
-            comments.push(commentText);
-            document.getElementById('commentText').value = '';
-            displayComments();
+        if (!commentAdded) {
+            const commentText = document.getElementById('commentText').value;
+            const signature = document.getElementById('signature').value;
+
+            if (commentText.trim() !== '') {
+                const comment = `${signature}: ${commentText}`;
+                await addDoc(collection(db, 'comments'), { text: comment });
+                comments.push(comment);
+                document.getElementById('commentText').value = '';
+                document.getElementById('signature').value = '';
+                displayComments();
+                commentAdded = true;
+            }
+        } else {
+            alert('Możesz dodać tylko jeden komentarz.');
         }
     }
 

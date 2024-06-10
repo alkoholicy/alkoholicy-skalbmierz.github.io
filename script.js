@@ -1,3 +1,5 @@
+import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js";
+
 document.addEventListener('DOMContentLoaded', async () => {
     const galleryItems = document.querySelectorAll('.gallery-item');
 

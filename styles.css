@@ -236,6 +236,30 @@ textarea {
     to { opacity: 1; }
 }
 
+#signature {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.comment-section {
+    margin-top: 4rem;
+    background: #fff;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+}
+
+.comment-section h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+
 /* Responsywność */
 @media (max-width: 768px) {
     .gallery {

@@ -3,13 +3,13 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebas
 import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js";
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID",
-  measurementId: "YOUR_MEASUREMENT_ID"
+  apiKey: "AIzaSyDt9loPyejqfFSu40AMaciRhYLPp8kgs_8",
+  authDomain: "skalbmierz-db3c1.firebaseapp.com",
+  projectId: "skalbmierz-db3c1",
+  storageBucket: "skalbmierz-db3c1.appspot.com",
+  messagingSenderId: "972084464934",
+  appId: "1:972084464934:web:751364286be13781d9c5e7",
+  measurementId: "G-W0Z1W2ZDHG"
 };
 
 const app = initializeApp(firebaseConfig);

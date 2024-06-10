@@ -1,21 +1,17 @@
 document.addEventListener('DOMContentLoaded', async () => {
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js";
+    const firebaseConfig = {
+        apiKey: "AIzaSyDt9loPyejqfFSu40AMaciRhYLPp8kgs_8",
+        authDomain: "skalbmierz-db3c1.firebaseapp.com",
+        projectId: "skalbmierz-db3c1",
+        storageBucket: "skalbmierz-db3c1.appspot.com",
+        messagingSenderId: "972084464934",
+        appId: "1:972084464934:web:751364286be13781d9c5e7",
+        measurementId: "G-W0Z1W2ZDHG"
+    };
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDt9loPyejqfFSu40AMaciRhYLPp8kgs_8",
-  authDomain: "skalbmierz-db3c1.firebaseapp.com",
-  projectId: "skalbmierz-db3c1",
-  storageBucket: "skalbmierz-db3c1.appspot.com",
-  messagingSenderId: "972084464934",
-  appId: "1:972084464934:web:751364286be13781d9c5e7",
-  measurementId: "G-W0Z1W2ZDHG"
-};
-
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const db = getFirestore(app);
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore(app);
 
     const galleryItems = document.querySelectorAll('.gallery-item');
 
@@ -42,7 +38,7 @@ const db = getFirestore(app);
 
             if (commentText.trim() !== '') {
                 const comment = `${signature}: ${commentText}`;
-                await addDoc(collection(db, 'comments'), { text: comment });
+                await db.collection('comments').add({ text: comment });
                 comments.push(comment);
                 document.getElementById('commentText').value = '';
                 document.getElementById('signature').value = '';
@@ -55,7 +51,7 @@ const db = getFirestore(app);
     }
 
     async function fetchComments() {
-        const querySnapshot = await getDocs(collection(db, 'comments'));
+        const querySnapshot = await db.collection('comments').get();
         querySnapshot.forEach(doc => {
             comments.push(doc.data().text);
         });

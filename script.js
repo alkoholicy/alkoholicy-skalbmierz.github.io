@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', async () => {
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
 import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js";
@@ -16,8 +17,6 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getFirestore(app);
 
-
-document.addEventListener('DOMContentLoaded', async () => {
     const galleryItems = document.querySelectorAll('.gallery-item');
 
     galleryItems.forEach(item => {
